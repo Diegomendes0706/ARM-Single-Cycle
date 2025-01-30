@@ -1,0 +1,47 @@
+vsim -gui work.testbench
+# vsim -gui work.testbench 
+# Start time: 17:19:54 on Jan 30,2025
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.top
+# Loading work.arm
+# Loading work.controller
+# Loading work.decoder
+# Loading work.condlogic
+# Loading work.flopenr
+# Loading work.condcheck
+# Loading work.datapath
+# Loading work.mux2
+# Loading work.flopr
+# Loading work.adder
+# Loading work.regfile
+# Loading work.extend
+# Loading work.alu
+# Loading work.imem
+# Loading work.dmem
+add wave -position end sim:/testbench/*
+run
+run -all
+# Simulation succeeded
+# ** Note: $stop    : C:/arq.comp/trabalho/armprocessors/arm_single.sv(105)
+#    Time: 205 ps  Iteration: 1  Instance: /testbench
+# Break in Module testbench at C:/arq.comp/trabalho/armprocessors/arm_single.sv line 105
+add wave -position end sim:/testbench/dut/*
+run -all
+# Break key hit
+# Simulation stop requested.
+run -all
+# Break key hit
+# Simulation stop requested.
+add wave -position end sim:/testbench/dut/*
+restart -f
+run -all
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Simulation succeeded
+# ** Note: $stop    : C:/arq.comp/trabalho/armprocessors/arm_single.sv(105)
+#    Time: 205 ps  Iteration: 1  Instance: /testbench
+# Break in Module testbench at C:/arq.comp/trabalho/armprocessors/arm_single.sv line 105
+add wave -position end sim:/testbench/dut/*
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/arq.comp/trabalho/armprocessors/wave.do
