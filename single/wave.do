@@ -14,7 +14,7 @@ add wave -noupdate -radix hexadecimal /testbench/WriteData
 add wave -noupdate -radix hexadecimal /testbench/MemWrite
 add wave -noupdate -radix hexadecimal /testbench/dut/ReadData
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {1 ps} 0} {{Cursor 2} {176 ps} 0}
+WaveRestoreCursors {{Cursor 1} {84 ps} 0} {{Cursor 2} {176 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 222
 configure wave -valuecolwidth 100
@@ -30,4 +30,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {58 ps}
+WaveRestoreZoom {0 ps} {304 ps}

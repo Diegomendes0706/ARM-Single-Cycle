@@ -1,7 +1,7 @@
 # Compile of arm_single.sv was successful.
 vsim -gui work.testbench
 # vsim -gui work.testbench 
-# Start time: 17:58:28 on Feb 01,2025
+# Start time: 21:47:55 on Feb 02,2025
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.top
@@ -20,65 +20,26 @@ vsim -gui work.testbench
 # Loading work.alu
 # Loading work.imem
 # Loading work.dmem
-add wave -position end  sim:/testbench/dut/Instr
-run -all
-# Simulation succeeded
-# ** Note: $stop    : C:/arq.comp/trabalho/single/arm_single.sv(105)
-#    Time: 205 ps  Iteration: 1  Instance: /testbench
-# Break in Module testbench at C:/arq.comp/trabalho/single/arm_single.sv line 105
-add wave -position end  sim:/testbench/clk
-run -all
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(434).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 360
+add wave -position end  sim:/testbench/dut/arm/clk
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: diego  Hostname: DIEGO_ACER  ProcessID: 36540
+#           Attempting to use alternate WLF file "./wlftn85m73".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftn85m73
+add wave -position end  sim:/testbench/dut/arm/reset
+add wave -position end  sim:/testbench/dut/arm/Instr
+add wave -position end  sim:/testbench/dut/arm/c/MovF
+add wave -position end  sim:/testbench/dut/arm/c/MovFlag
+add wave -position end  sim:/testbench/dut/arm/dp/rf/rf
+run
 # Break key hit
-# Simulation stop requested.
 restart -f
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-clear
-# invalid command name "clear"
-add wave -position end  sim:/testbench/dut/clk
-add wave -position end  sim:/testbench/dut/Instr
-run -all
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(434).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 360
+run
 # GetModuleFileName: Não foi possível encontrar o módulo especificado.
 # 
 # 
-# Simulation succeeded
-# ** Note: $stop    : C:/arq.comp/trabalho/single/arm_single.sv(105)
-#    Time: 205 ps  Iteration: 1  Instance: /testbench
-# Break in Module testbench at C:/arq.comp/trabalho/single/arm_single.sv line 105
-add wave -position end  sim:/testbench/dut/PC
-add wave -position end  sim:/testbench/dut/reset
-# Break key hit
-restart -f
-run -all
-# GetModuleFileName: Não foi possível encontrar o módulo especificado.
-# 
-# 
-# Simulation succeeded
-# ** Note: $stop    : C:/arq.comp/trabalho/single/arm_single.sv(105)
-#    Time: 205 ps  Iteration: 1  Instance: /testbench
-# Break in Module testbench at C:/arq.comp/trabalho/single/arm_single.sv line 105
-add wave -position end  sim:/testbench/dut/arm/dp/SrcA
-add wave -position end  sim:/testbench/dut/arm/dp/SrcB
-add wave -position end  sim:/testbench/dut/arm/c/dec/Branch
-add wave -position end  sim:/testbench/dut/arm/ALUResult
-add wave -position end  sim:/testbench/dut/arm/ALUFlags
-add wave -position end  sim:/testbench/dut/arm/c/cl/CondEx
-add wave -position end  sim:/testbench/WriteData
-add wave -position end  sim:/testbench/MemWrite
-add wave -position end  sim:/testbench/dut/ReadData
-# Break key hit
-restart -f
-run -all
-# GetModuleFileName: Não foi possível encontrar o módulo especificado.
-# 
-# 
-# Simulation succeeded
-# ** Note: $stop    : C:/arq.comp/trabalho/single/arm_single.sv(105)
-#    Time: 205 ps  Iteration: 1  Instance: /testbench
-# Break in Module testbench at C:/arq.comp/trabalho/single/arm_single.sv line 105
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/arq.comp/trabalho/single/wave.do
-# Unrecognized paper size (Letter), using Custom
-# Unrecognized paper size (Letter), using Custom
-# Unrecognized paper size (Letter), using Custom
-# Unrecognized paper size (Letter), using Custom
-# Unrecognized paper size (Letter), using Custom
-# Unrecognized paper size (Letter), using Custom
