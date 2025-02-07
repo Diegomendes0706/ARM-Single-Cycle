@@ -460,7 +460,7 @@ module alu(input  logic [31:0] a, b,
     casex (ALUControl[2:0])
       3'b00?: Result = sum;
       3'b010: Result = a & b;
-      3b101: Result = a | b;
+      3'b101: Result = a | b;
     endcase
 
   assign neg      = Result[31];
