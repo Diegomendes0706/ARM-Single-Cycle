@@ -146,7 +146,8 @@ module arm(input  logic        clk, reset,
   logic [3:0] ALUFlags;
   logic       RegWrite, MovFlag,
               ALUSrc, MemtoReg, PCSrc;
-  logic [1:0] RegSrc, ImmSrc, ALUControl;
+  logic [1:0] RegSrc, ImmSrc;
+  logic [2:0] ALUControl;
 
   controller c(clk, reset, Instr[31:12], ALUFlags, 
                RegSrc, RegWrite, ImmSrc, 
@@ -167,16 +168,16 @@ module controller(input  logic         clk, reset,
                   output logic         RegWrite,
                   output logic [1:0]   ImmSrc,
                   output logic         ALUSrc, 
-                  output logic [1:0]   ALUControl,
+                  output logic [2:0]   ALUControl,
                   output logic         MemWrite, MemtoReg,
 		              output logic	       MovFlag,
                   output logic         PCSrc);
 
   logic [1:0] FlagW;
-  logic       PCS, RegW, MemW, MovF;
+  logic       PCS, RegW, MemW, MovF, NoWrite;
   
   decoder dec(Instr[27:26], Instr[25:20], Instr[15:12],
-              FlagW, PCS, RegW, MemW, MemtoReg, ALUSrc, MovF, ImmSrc, RegSrc, ALUControl);
+              FlagW, PCS, RegW, MemW, MemtoReg, ALUSrc, MovF, NoWrite, ImmSrc, RegSrc, ALUControl);
   condlogic cl(clk, reset, Instr[31:28], ALUFlags,  FlagW, PCS, RegW, MemW, MovF,
                PCSrc, RegWrite, MemWrite, MovFlag);
 endmodule
@@ -186,8 +187,9 @@ module decoder(input  logic [1:0] Op,
                input  logic [3:0] Rd,
                output logic [1:0] FlagW,
                output logic       PCS, RegW, MemW,
-               output logic       MemtoReg, ALUSrc, MovF,
-               output logic [1:0] ImmSrc, RegSrc, ALUControl);
+               output logic       MemtoReg, ALUSrc, MovF, NoWrite,
+               output logic [1:0] ImmSrc, RegSrc,
+               output logic [2:0] ALUControl);
 
   logic [9:0] controls;
   logic       Branch, ALUOp;
@@ -215,54 +217,57 @@ module decoder(input  logic [1:0] Op,
           
   // ALU Decoder             
   always_comb
-    if (ALUOp) begin                 // which DP Instr?
+    if (ALUOp) begin             // which DP Instr?
       case(Funct[4:1]) 
         4'b0100: begin
-            ALUControl = 2'b00; // ADD
-      // 	                  NoWrite = 1'b0;
-            MovF = 1'b0;
+          ALUControl = 3'b000;    // ADD
+          NoWrite = 1'b0;
+          MovF = 1'b0;
         end
   	             
   	    4'b0010: begin
-              ALUControl = 2'b01; // SUB
-// 	                  NoWrite = 1'b0;
-        MovF = 1'b0;
+          ALUControl = 3'b001;    // SUB
+          NoWrite = 1'b0;
+          MovF = 1'b0;
         end
   	    
         4'b0000: begin
-          ALUControl = 2'b10; // AND  
-//   	                        NoWrite = 1'b0;
+          ALUControl = 3'b010;    // AND  
+          NoWrite = 1'b0;
           MovF = 1'b0;
         end
   	            
   	    4'b1100: begin
-          ALUControl = 2'b11; // ORR
-//  	                 NoWrite = 1'b0;
+          ALUControl = 3'b011;    // ORR
+          NoWrite = 1'b0;
           MovF = 1'b0;
         end
   	   
   	    4'B1101: begin
-          ALUControl = 2'bx;  // unimplemented
-//  	                 NoWrite = 1'b0;
-          MovF = 1'b1;     // MOV
+          ALUControl = 3'bx;      // MOV
+          NoWrite = 1'b0;
+          MovF = 1'b1;            
         end
- 	    
+        4'B1010: begin
+          ALUControl = 3'b001;    // CMP
+          NoWrite = 1'b1;
+          MovF = 1'b0;            
+        end
   	    default: begin
-          ALUControl = 2'bx;  // unimplemented
-  //  	                 NoWrite = 1'b0;
+          ALUControl = 3'bx;  // unimplemented
+          NoWrite = 1'b0;
           MovF = 1'b0;
         end
   	     	       
 
-endcase
+      endcase
       // update flags if S bit is set 
 	// (C & V only updated for arith instructions)
       FlagW[1]      = Funct[0]; // FlagW[1] = S-bit
 	// FlagW[0] = S-bit & (ADD | SUB)
-      FlagW[0]      = Funct[0] & 
-        (ALUControl == 2'b00 | ALUControl == 2'b01); 
+      FlagW[0]      = Funct[0] & (ALUControl == 3'b000 | ALUControl == 3'b001); 
     end else begin
-      ALUControl = 2'b00; // add for non-DP instructions
+      ALUControl = 3'b000; // add for non-DP instructions
       FlagW      = 2'b00; // don't update Flags
     end
               
@@ -274,7 +279,7 @@ module condlogic(input  logic       clk, reset,
                  input  logic [3:0] Cond,
                  input  logic [3:0] ALUFlags,
                  input  logic [1:0] FlagW,
-                 input  logic       PCS, RegW, MemW, MovF,
+                 input  logic       PCS, RegW, MemW, MovF, NoWrite,
                  output logic       PCSrc, RegWrite, MemWrite, MovFlag);
                  
   logic [1:0] FlagWrite;
@@ -289,7 +294,7 @@ module condlogic(input  logic       clk, reset,
   // write controls are conditional
   condcheck cc(Cond, Flags, CondEx);
   assign FlagWrite = FlagW & {2{CondEx}};
-  assign RegWrite  = RegW  & CondEx;
+  assign RegWrite  = RegW  & CondEx & ~NoWrite;
   assign MemWrite  = MemW  & CondEx;
   assign PCSrc     = PCS   & CondEx;
   assign MovFlag   = MovF  & CondEx;
@@ -330,10 +335,10 @@ module datapath(input  logic        clk, reset,
                 input  logic        RegWrite,
                 input  logic [1:0]  ImmSrc,
                 input  logic        ALUSrc,
-                input  logic [1:0]  ALUControl,
+                input  logic [2:0]  ALUControl,
                 input  logic        MemtoReg,
                 input  logic        PCSrc,
-		input  logic        MovFlag,
+		            input  logic        MovFlag,
                 output logic [3:0]  ALUFlags,
                 output logic [31:0] PC,
                 input  logic [31:0] Instr,
@@ -440,7 +445,7 @@ endmodule
 
 
 module alu(input  logic [31:0] a, b,
-           input  logic [1:0]  ALUControl,
+           input  logic [2:0]  ALUControl,
            output logic [31:0] Result,
            output logic [3:0]  ALUFlags);
 
@@ -452,19 +457,17 @@ module alu(input  logic [31:0] a, b,
   assign sum = a + condinvb + ALUControl[0];
 
   always_comb
-    casex (ALUControl[1:0])
-      2'b0?: Result = sum;
-      2'b10: Result = a & b;
-      2'b11: Result = a | b;
+    casex (ALUControl[2:0])
+      3'b00?: Result = sum;
+      3'b010: Result = a & b;
+      3b101: Result = a | b;
     endcase
 
   assign neg      = Result[31];
   assign zero     = (Result == 32'b0);
   assign carry    = (ALUControl[1] == 1'b0) & sum[32];
-  assign overflow = (ALUControl[1] == 1'b0) & 
-                    ~(a[31] ^ b[31] ^ ALUControl[0]) & 
-                    (a[31] ^ sum[31]); 
-  assign ALUFlags    = {neg, zero, carry, overflow};
+  assign overflow = (ALUControl[1] == 1'b0) & ~(a[31] ^ b[31] ^ ALUControl[0]) & (a[31] ^ sum[31]); 
+  assign ALUFlags = {neg, zero, carry, overflow};
 endmodule
 
 
