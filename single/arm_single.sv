@@ -243,16 +243,28 @@ module decoder(input  logic [1:0] Op,
           MovF = 1'b0;
         end
   	   
-  	    4'B1101: begin
+  	    4'b1101: begin
           ALUControl = 3'bx;      // MOV
           NoWrite = 1'b0;
           MovF = 1'b1;            
         end
-        4'B1010: begin
+        4'b1010: begin
           ALUControl = 3'b001;    // CMP
           NoWrite = 1'b1;
           MovF = 1'b0;            
         end
+        4'b1000: begin
+          ALUControl = 3'b010;    // TST
+          NoWrite = 1'b1;
+          MovF = 1'b0;
+        end
+
+        4'b0001: begin
+          ALUControl = 3'b100;    // EOR
+          NoWrite = 1'b0;
+          MovF = 1'b0;
+        end          
+
   	    default: begin
           ALUControl = 3'bx;  // unimplemented
           NoWrite = 1'b0;
@@ -460,7 +472,8 @@ module alu(input  logic [31:0] a, b,
     casex (ALUControl[2:0])
       3'b00?: Result = sum;
       3'b010: Result = a & b;
-      3'b101: Result = a | b;
+      3'b011: Result = a | b;
+      3'b100: Result = a ^ b;
     endcase
 
   assign neg      = Result[31];
