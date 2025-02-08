@@ -88,15 +88,19 @@ module testbench();
   // initialize test
   initial
     begin
-      reset <= 1; # 22; reset <= 0;
+      reset <= 1; 
+      # 22; 
+      reset <= 0;
     end
 
   // generate clock to sequence tests
   always
     begin
-      clk <= 1; # 5; clk <= 0; # 5;
+      clk <= 1; 
+      #5; 
+      clk <= 0; 
+      # 5;
     end
-
 
 endmodule
 
@@ -275,12 +279,13 @@ module decoder(input  logic [1:0] Op,
       endcase
       // update flags if S bit is set 
 	// (C & V only updated for arith instructions)
-      FlagW[1]      = Funct[0]; // FlagW[1] = S-bit
+      FlagW[1] = Funct[0]; // FlagW[1] = S-bit
 	// FlagW[0] = S-bit & (ADD | SUB)
-      FlagW[0]      = Funct[0] & (ALUControl == 3'b000 | ALUControl == 3'b001); 
+      FlagW[0] = Funct[0] & (ALUControl == 3'b000 | ALUControl == 3'b001); 
     end else begin
       ALUControl = 3'b000; // add for non-DP instructions
       FlagW      = 2'b00; // don't update Flags
+      NoWrite    = 1'b0;
     end
               
   // PC Logic
@@ -482,5 +487,3 @@ module alu(input  logic [31:0] a, b,
   assign overflow = (ALUControl[1] == 1'b0) & ~(a[31] ^ b[31] ^ ALUControl[0]) & (a[31] ^ sum[31]); 
   assign ALUFlags = {neg, zero, carry, overflow};
 endmodule
-
-
