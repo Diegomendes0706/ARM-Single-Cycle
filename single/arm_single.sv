@@ -149,7 +149,7 @@ module imem(input  logic [31:0] a,
   logic [31:0] RAM[63:0];
 
   initial
-      $readmemh("memfile.dat",RAM);
+      $readmemh("memfile2.dat",RAM);
 
   assign rd = RAM[a[31:2]]; // word aligned
 endmodule
@@ -284,7 +284,7 @@ module decoder(input  logic [1:0] Op,
         end          
 
   	    default: begin
-          ALUControl = 3'bx;  // unimplemented
+          ALUControl = 3'bx;      // unimplemented
           NoWrite = 1'b0;
           MovF = 1'b0;
         end

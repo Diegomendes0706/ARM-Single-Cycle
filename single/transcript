@@ -65,3 +65,220 @@ run
 # 
 # 
 # Break key hit
+# Compile of arm_single.sv was successful.
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.testbench
+# Loading work.top
+# Loading work.arm
+# Loading work.controller
+# Loading work.decoder
+# Loading work.condlogic
+# Loading work.flopenr
+# Loading work.condcheck
+# Loading work.datapath
+# Loading work.mux2
+# Loading work.flopr
+# Loading work.adder
+# Loading work.regfile
+# Loading work.extend
+# Loading work.alu
+# Loading work.imem
+# Loading work.dmem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(469).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 395
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(469).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 395
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(469).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 395
+run -all
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Compile of arm_single.sv was successful.
+# Break key hit
+# Break in Module flopr at C:/arq.comp/trabalho/single/arm_single.sv line 463
+# Break key hit
+run
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.testbench
+# Loading work.top
+# Loading work.arm
+# Loading work.controller
+# Loading work.decoder
+# Loading work.condlogic
+# Loading work.flopenr
+# Loading work.condcheck
+# Loading work.datapath
+# Loading work.mux2
+# Loading work.flopr
+# Loading work.adder
+# Loading work.regfile
+# Loading work.extend
+# Loading work.alu
+# Loading work.imem
+# Loading work.dmem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(469).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 395
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# WARNING: No extended dataflow license exists
+add wave -position 3  sim:/testbench/dut/arm/ALUFlags
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(469).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 395
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+run
+# Compile of arm_single.sv was successful.
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.testbench
+# Loading work.top
+# Loading work.arm
+# Loading work.controller
+# Loading work.decoder
+# Loading work.condlogic
+# Loading work.flopenr
+# Loading work.condcheck
+# Loading work.datapath
+# Loading work.mux2
+# Loading work.flopr
+# Loading work.adder
+# Loading work.regfile
+# Loading work.extend
+# Loading work.alu
+# Loading work.imem
+# Loading work.dmem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(470).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 396
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+run
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(470).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 396
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Break key hit
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(470).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 396
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Compile of arm_single.sv was successful.
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.testbench
+# Loading work.top
+# Loading work.arm
+# Loading work.controller
+# Loading work.decoder
+# Loading work.condlogic
+# Loading work.flopenr
+# Loading work.condcheck
+# Loading work.datapath
+# Loading work.mux2
+# Loading work.flopr
+# Loading work.adder
+# Loading work.regfile
+# Loading work.extend
+# Loading work.alu
+# Loading work.imem
+# Loading work.dmem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(471).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 397
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(471).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 397
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(471).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 397
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Compile of arm_single.sv was successful.
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.testbench
+# Loading work.top
+# Loading work.arm
+# Loading work.controller
+# Loading work.decoder
+# Loading work.condlogic
+# Loading work.flopenr
+# Loading work.condcheck
+# Loading work.datapath
+# Loading work.mux2
+# Loading work.flopr
+# Loading work.adder
+# Loading work.regfile
+# Loading work.extend
+# Loading work.alu
+# Loading work.imem
+# Loading work.dmem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(471).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 397
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(471).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 397
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
