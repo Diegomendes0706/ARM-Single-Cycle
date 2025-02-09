@@ -1,7 +1,3 @@
-// MOV implementado
-// CMP implementado
-// TST implementado
-// EOR para fazer
 // arm_single.sv
 // David_Harris@hmc.edu and Sarah_Harris@hmc.edu 25 June 2013
 // Single-cycle implementation of a subset of ARMv4
