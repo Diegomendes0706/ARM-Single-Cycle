@@ -1,7 +1,7 @@
 # Compile of arm_single.sv was successful.
 vsim -gui work.testbench
 # vsim -gui work.testbench 
-# Start time: 14:49:04 on Feb 08,2025
+# Start time: 15:22:21 on Feb 09,2025
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.top
@@ -20,14 +20,48 @@ vsim -gui work.testbench
 # Loading work.alu
 # Loading work.imem
 # Loading work.dmem
-# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'cl'.  Expected 14, found 13.
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/c/cl File: C:/arq.comp/trabalho/single/arm_single.sv Line: 185
-# ** Warning: (vsim-3722) C:/arq.comp/trabalho/single/arm_single.sv(185): [TFMPC] - Missing connection for port 'MovFlag'.
-# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(456).
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 382
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(470).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 396
 add wave -position end  sim:/testbench/dut/arm/clk
 add wave -position end  sim:/testbench/dut/arm/reset
 add wave -position end  sim:/testbench/dut/arm/Instr
 add wave -position end  sim:/testbench/dut/arm/dp/rf/rf
-add wave -position end  sim:/testbench/dut/arm/dp/rf/rf
 run
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Compile of arm_single.sv was successful.
+# Break key hit
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.testbench
+# Loading work.top
+# Loading work.arm
+# Loading work.controller
+# Loading work.decoder
+# Loading work.condlogic
+# Loading work.flopenr
+# Loading work.condcheck
+# Loading work.datapath
+# Loading work.mux2
+# Loading work.flopr
+# Loading work.adder
+# Loading work.regfile
+# Loading work.extend
+# Loading work.alu
+# Loading work.imem
+# Loading work.dmem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (1) for port 'd0'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(469).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm/dp/movmux File: C:/arq.comp/trabalho/single/arm_single.sv Line: 395
+run
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Break key hit

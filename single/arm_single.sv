@@ -102,6 +102,20 @@ module testbench();
       # 5;
     end
 
+  // check results
+  always @(negedge clk)
+    begin
+      if(MemWrite) begin
+        if(DataAdr === 100 & WriteData === 7) begin
+          $display("Simulation succeeded");
+          $stop;
+        end else if (DataAdr !== 96) begin
+          $display("Simulation failed");
+          $stop;
+        end
+      end
+    end
+
 endmodule
 
 module top(input  logic        clk, reset, 
@@ -182,7 +196,7 @@ module controller(input  logic         clk, reset,
   
   decoder dec(Instr[27:26], Instr[25:20], Instr[15:12],
               FlagW, PCS, RegW, MemW, MemtoReg, ALUSrc, MovF, NoWrite, ImmSrc, RegSrc, ALUControl);
-  condlogic cl(clk, reset, Instr[31:28], ALUFlags,  FlagW, PCS, RegW, MemW, MovF,
+  condlogic cl(clk, reset, Instr[31:28], ALUFlags,  FlagW, PCS, RegW, MemW, MovF, NoWrite,
                PCSrc, RegWrite, MemWrite, MovFlag);
 endmodule
 
@@ -285,7 +299,6 @@ module decoder(input  logic [1:0] Op,
     end else begin
       ALUControl = 3'b000; // add for non-DP instructions
       FlagW      = 2'b00; // don't update Flags
-      NoWrite    = 1'b0;
     end
               
   // PC Logic
