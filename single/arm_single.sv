@@ -1,3 +1,7 @@
+// MOV implementado
+// CMP implementado
+// TST implementado
+// EOR para fazer
 // arm_single.sv
 // David_Harris@hmc.edu and Sarah_Harris@hmc.edu 25 June 2013
 // Single-cycle implementation of a subset of ARMv4
@@ -97,7 +101,7 @@ module testbench();
   always
     begin
       clk <= 1; 
-      #5; 
+      # 5; 
       clk <= 0; 
       # 5;
     end
@@ -115,7 +119,6 @@ module testbench();
         end
       end
     end
-
 endmodule
 
 module top(input  logic        clk, reset, 
@@ -188,7 +191,7 @@ module controller(input  logic         clk, reset,
                   output logic         ALUSrc, 
                   output logic [2:0]   ALUControl,
                   output logic         MemWrite, MemtoReg,
-		              output logic	       MovFlag,
+                  output logic         MovFlag,
                   output logic         PCSrc);
 
   logic [1:0] FlagW;
@@ -196,7 +199,7 @@ module controller(input  logic         clk, reset,
   
   decoder dec(Instr[27:26], Instr[25:20], Instr[15:12],
               FlagW, PCS, RegW, MemW, MemtoReg, ALUSrc, MovF, NoWrite, ImmSrc, RegSrc, ALUControl);
-  condlogic cl(clk, reset, Instr[31:28], ALUFlags,  FlagW, PCS, RegW, MemW, MovF, NoWrite,
+  condlogic cl(clk, reset, Instr[31:28], ALUFlags, FlagW, PCS, RegW, MemW, MovF, NoWrite,
                PCSrc, RegWrite, MemWrite, MovFlag);
 endmodule
 
@@ -299,6 +302,7 @@ module decoder(input  logic [1:0] Op,
     end else begin
       ALUControl = 3'b000; // add for non-DP instructions
       FlagW      = 2'b00; // don't update Flags
+      NoWrite    = 1'b0;
     end
               
   // PC Logic
@@ -368,7 +372,7 @@ module datapath(input  logic        clk, reset,
                 input  logic [2:0]  ALUControl,
                 input  logic        MemtoReg,
                 input  logic        PCSrc,
-		            input  logic        MovFlag,
+                input  logic        MovFlag,
                 output logic [3:0]  ALUFlags,
                 output logic [31:0] PC,
                 input  logic [31:0] Instr,
@@ -376,7 +380,7 @@ module datapath(input  logic        clk, reset,
                 input  logic [31:0] ReadData);
 
   logic [31:0] PCNext, PCPlus4, PCPlus8;
-  logic [31:0] ExtImm, SrcA, SrcB, Result, MovORAluResult;
+  logic [31:0] ExtImm, SrcA, SrcB, Result, MovOrALUResult;
   logic [3:0]  RA1, RA2;
 
   // next PC logic
@@ -392,9 +396,9 @@ module datapath(input  logic        clk, reset,
                  Instr[15:12], Result, PCPlus8, 
                  SrcA, WriteData);
 
-  mux2 #(32)  movmux(AluResult, SrcB, MovFlag, MovORAluResult);
- 
-  mux2 #(32)  resmux(MovORAluResult, ReadData, MemtoReg, Result);
+  mux2 #(32)  movmux(ALUResult, SrcB, MovFlag, MovOrALUResult);               
+
+  mux2 #(32)  resmux(MovOrALUResult, ReadData, MemtoReg, Result);
   extend      ext(Instr[23:0], ImmSrc, ExtImm);
 
   // ALU logic
@@ -497,6 +501,8 @@ module alu(input  logic [31:0] a, b,
   assign neg      = Result[31];
   assign zero     = (Result == 32'b0);
   assign carry    = (ALUControl[1] == 1'b0) & sum[32];
-  assign overflow = (ALUControl[1] == 1'b0) & ~(a[31] ^ b[31] ^ ALUControl[0]) & (a[31] ^ sum[31]); 
-  assign ALUFlags = {neg, zero, carry, overflow};
+  assign overflow = (ALUControl[1] == 1'b0) & 
+                    ~(a[31] ^ b[31] ^ ALUControl[0]) & 
+                    (a[31] ^ sum[31]); 
+  assign ALUFlags    = {neg, zero, carry, overflow};
 endmodule
