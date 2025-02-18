@@ -73,24 +73,26 @@
 //    1101  Signed less/equal             N != V | Z = 1
 //    1110  Always                        any
 
-
 module testbench();
 
-  logic        clk;
+  logic        clk, clk_timer;
   logic        reset;
 
   logic [31:0] WriteData, DataAdr;
   logic        MemWrite;
 
   // instantiate device to be tested
-  top dut(clk, reset, WriteData, DataAdr, MemWrite);
+  top dut(clk, reset, clk_timer, WriteData, DataAdr, MemWrite);
   
   // initialize test
-  initial
+  initial 
     begin
       reset <= 1; 
       # 22; 
       reset <= 0;
+
+      // Escreva o valor do timer no endereço 30 da memória de dados
+      dut.dmem.RAM[30] = 32'd10; // Define o tempo para 10 ciclos
     end
 
   // generate clock to sequence tests
@@ -102,44 +104,92 @@ module testbench();
       # 5;
     end
 
-  // check results
-  always @(negedge clk)
+  // generate slower clock for the timer
+  always
     begin
-      if(MemWrite) begin
-        if(DataAdr === 100 & WriteData === 7) begin
-          $display("Simulation succeeded");
-          $stop;
-        end else if (DataAdr !== 96) begin
-          $display("Simulation failed");
-          $stop;
-        end
-      end
+      clk_timer <= 1; 
+      # 500; 
+      clk_timer <= 0; 
+      # 500;
     end
+
+  // Monitorar o sinal conta_flag
+  always @(posedge clk_timer) begin
+    if (dut.timer.conta_flag) begin
+      $display("Timer atingiu o valor definido!");
+      $stop; // Para a simulação quando o timer for ativado
+    end
+  end
+
 endmodule
 
-module top(input  logic        clk, reset, 
+module top(input  logic        clk, reset, clk_timer,
            output logic [31:0] WriteData, DataAdr, 
            output logic        MemWrite);
 
   logic [31:0] PC, Instr, ReadData;
+  logic [31:0] tempo_valor, conta_flag;
   
   // instantiate processor and memories
   arm arm(clk, reset, PC, Instr, MemWrite, DataAdr, 
-          WriteData, ReadData);
+          WriteData, ReadData, conta_flag);
   imem imem(PC, Instr);
-  dmem dmem(clk, MemWrite, DataAdr, WriteData, ReadData);
+  dmem dmem(clk, MemWrite, DataAdr, WriteData, ReadData, tempo_valor);  
+  timer timer(clk_timer, tempo_valor, conta_flag);
 endmodule
+
+module timer(input logic        clk_timer,
+             input logic [31:0] tempo_valor, // tempo escolhido
+             output logic       conta_flag);   // Flag para o fim da contagem
+  
+  logic [31:0]   adder_result;
+  logic          reset_adder;
+
+  adder_t add(clk_timer, reset_adder, adder_result);
+  comparator comp(tempo_valor, adder_result, conta_flag, reset_adder);
+
+endmodule
+
+module adder_t (input logic         clk_timer, 
+                input logic         reset_adder,
+                output logic [31:0] adder_result);
+
+  logic [31:0] result = 32'd0;
+
+  always_ff @(posedge clk_timer) begin
+    if (reset_adder)
+      result <= 32'd0;
+    else 
+      result <= result + 32'd1;
+  end
+
+  assign adder_result = result ;
+     
+endmodule
+
+module comparator(input logic [31:0]  tempo_valor,
+                  input logic [31:0]  adder_result,
+                  output logic        conta_flag,
+                  output logic        reset_adder);
+        
+  assign conta_flag = (tempo_valor == adder_result);
+  assign reset_adder = (tempo_valor == adder_result);
+
+endmodule 
 
 module dmem(input  logic        clk, we,
             input  logic [31:0] a, wd,
-            output logic [31:0] rd);
+            output logic [31:0] rd,
+            output logic [31:0] tempo_valor);
 
   logic [31:0] RAM[63:0];
 
-  assign rd = RAM[a[31:2]]; // word aligned
-
+  assign rd = RAM[a[31:2]];     // word aligned
+  assign tempo_valor = RAM[30]; // Valor de tempo para o timer
+  
   always_ff @(posedge clk)
     if (we) RAM[a[31:2]] <= wd;
+
 endmodule
 
 module imem(input  logic [31:0] a,
@@ -158,7 +208,8 @@ module arm(input  logic        clk, reset,
            input  logic [31:0] Instr,
            output logic        MemWrite,
            output logic [31:0] ALUResult, WriteData,
-           input  logic [31:0] ReadData);
+           input  logic [31:0] ReadData,
+           input  logic        conta_flag);
 
   logic [3:0] ALUFlags;
   logic       RegWrite, MovFlag,
@@ -169,7 +220,7 @@ module arm(input  logic        clk, reset,
   controller c(clk, reset, Instr[31:12], ALUFlags, 
                RegSrc, RegWrite, ImmSrc, 
                ALUSrc, ALUControl,
-               MemWrite, MemtoReg, MovFlag, PCSrc);
+               MemWrite, MemtoReg, MovFlag, PCSrc, conta_flag);
   datapath dp(clk, reset, 
               RegSrc, RegWrite, ImmSrc,
               ALUSrc, ALUControl,
@@ -188,7 +239,8 @@ module controller(input  logic         clk, reset,
                   output logic [2:0]   ALUControl,
                   output logic         MemWrite, MemtoReg,
                   output logic         MovFlag,
-                  output logic         PCSrc);
+                  output logic         PCSrc,
+                  input  logic         conta_flag);
 
   logic [1:0] FlagW;
   logic       PCS, RegW, MemW, MovF, NoWrite;
@@ -198,6 +250,7 @@ module controller(input  logic         clk, reset,
   condlogic cl(clk, reset, Instr[31:28], ALUFlags, FlagW, PCS, RegW, MemW, MovF, NoWrite,
                PCSrc, RegWrite, MemWrite, MovFlag);
 endmodule
+
 
 module decoder(input  logic [1:0] Op,
                input  logic [5:0] Funct,
@@ -212,7 +265,7 @@ module decoder(input  logic [1:0] Op,
   logic       Branch, ALUOp;
 
   // Main Decoder
-  
+
   always_comb
   	case(Op)
   	                        // Data processing immediate
@@ -287,7 +340,6 @@ module decoder(input  logic [1:0] Op,
           NoWrite = 1'b0;
           MovF = 1'b0;
         end
-  	     	       
 
       endcase
       // update flags if S bit is set 
@@ -298,7 +350,6 @@ module decoder(input  logic [1:0] Op,
     end else begin
       ALUControl = 3'b000; // add for non-DP instructions
       FlagW      = 2'b00; // don't update Flags
-      NoWrite    = 1'b0;
     end
               
   // PC Logic
@@ -328,6 +379,7 @@ module condlogic(input  logic       clk, reset,
   assign MemWrite  = MemW  & CondEx;
   assign PCSrc     = PCS   & CondEx;
   assign MovFlag   = MovF  & CondEx;
+
 endmodule    
 
 module condcheck(input  logic [3:0] Cond,
@@ -501,4 +553,5 @@ module alu(input  logic [31:0] a, b,
                     ~(a[31] ^ b[31] ^ ALUControl[0]) & 
                     (a[31] ^ sum[31]); 
   assign ALUFlags    = {neg, zero, carry, overflow};
+  
 endmodule

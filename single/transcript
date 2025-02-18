@@ -2,7 +2,7 @@
 # Compile of arm_single.sv was successful.
 vsim -gui work.testbench
 # vsim -gui work.testbench 
-# Start time: 19:07:53 on Feb 09,2025
+# Start time: 12:23:58 on Feb 18,2025
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.top
@@ -21,75 +21,53 @@ vsim -gui work.testbench
 # Loading work.alu
 # Loading work.imem
 # Loading work.dmem
+# Loading work.timer
+# Loading work.adder_t
+# Loading work.comparator
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'conta_flag'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(212).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm File: C:/arq.comp/trabalho/single/arm_single.sv Line: 134
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'conta_flag'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(143).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/timer File: C:/arq.comp/trabalho/single/arm_single.sv Line: 138
 add wave -position end  sim:/testbench/dut/arm/clk
 add wave -position end  sim:/testbench/dut/arm/reset
 add wave -position end  sim:/testbench/dut/arm/Instr
-add wave -position end  sim:/testbench/dut/arm/ALUFlags
-add wave -position end  sim:/testbench/dut/arm/MovFlag
-add wave -position end  sim:/testbench/dut/arm/dp/rf/rf
+add wave -position end  sim:/testbench/dut/timer/clk_timer
+add wave -position end  sim:/testbench/dut/timer/tempo_valor
 run
 # Break key hit
 restart -f
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'conta_flag'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(212).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm File: C:/arq.comp/trabalho/single/arm_single.sv Line: 134
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'conta_flag'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(143).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/timer File: C:/arq.comp/trabalho/single/arm_single.sv Line: 138
 run
 # GetModuleFileName: Não foi possível encontrar o módulo especificado.
 # 
 # 
-# Compile of arm_single.sv was successful.
+add wave -position end  sim:/testbench/dut/timer/adder_result
 # Break key hit
 restart -f
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.testbench
-# Loading work.top
-# Loading work.arm
-# Loading work.controller
-# Loading work.decoder
-# Loading work.condlogic
-# Loading work.flopenr
-# Loading work.condcheck
-# Loading work.datapath
-# Loading work.mux2
-# Loading work.flopr
-# Loading work.adder
-# Loading work.regfile
-# Loading work.extend
-# Loading work.alu
-# Loading work.imem
-# Loading work.dmem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'conta_flag'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(212).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm File: C:/arq.comp/trabalho/single/arm_single.sv Line: 134
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'conta_flag'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(143).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/timer File: C:/arq.comp/trabalho/single/arm_single.sv Line: 138
 run
 # GetModuleFileName: Não foi possível encontrar o módulo especificado.
 # 
 # 
-run
-# Compile of arm_single.sv was successful.
-add wave -position end  sim:/testbench/dut/arm/clk
-add wave -position end  sim:/testbench/dut/arm/reset
-add wave -position end  sim:/testbench/dut/arm/Instr
-add wave -position end  sim:/testbench/dut/arm/ALUFlags
 add wave -position end  sim:/testbench/dut/arm/dp/rf/rf
 # Break key hit
+run
+# Break key hit
 restart -f
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.testbench
-# Loading work.top
-# Loading work.arm
-# Loading work.controller
-# Loading work.decoder
-# Loading work.condlogic
-# Loading work.flopenr
-# Loading work.condcheck
-# Loading work.datapath
-# Loading work.mux2
-# Loading work.flopr
-# Loading work.adder
-# Loading work.regfile
-# Loading work.extend
-# Loading work.alu
-# Loading work.imem
-# Loading work.dmem
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'conta_flag'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(212).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/arm File: C:/arq.comp/trabalho/single/arm_single.sv Line: 134
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'conta_flag'. The port definition is at: C:/arq.comp/trabalho/single/arm_single.sv(143).
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut/timer File: C:/arq.comp/trabalho/single/arm_single.sv Line: 138
 run
 # GetModuleFileName: Não foi possível encontrar o módulo especificado.
 # 
 # 
-# End time: 19:26:35 on Feb 09,2025, Elapsed time: 0:18:42
-# Errors: 0, Warnings: 1

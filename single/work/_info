@@ -11,44 +11,44 @@ cModel Technology
 dC:/intelFPGA/20.1
 vadder
 Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z1 !s110 1739139886
+Z1 !s110 1739892227
 !i10b 1
-!s100 A2F;J1HFAEQ^TnXcL_Pog2
+!s100 IO`9<AalzHSOLUmlI4BOJ1
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IHD1Q3zTBbMMcdZAjf=4[;1
+IJQTTezWYCdVW:geRZ?<9U1
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 S1
 Z4 dC:/arq.comp/trabalho/single
-Z5 w1739139870
+Z5 w1739892224
 Z6 8C:/arq.comp/trabalho/single/arm_single.sv
 Z7 FC:/arq.comp/trabalho/single/arm_single.sv
-!i122 11
-L0 445 6
+!i122 21
+L0 493 6
 Z8 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z9 !s108 1739139885.000000
+Z9 !s108 1739892227.000000
 !s107 C:/arq.comp/trabalho/single/arm_single.sv|
 Z10 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/arq.comp/trabalho/single/arm_single.sv|
 !i113 1
 Z11 o-work work -sv
 Z12 tCvgOpt 0
-valu
+vadder_t
 R0
 R1
 !i10b 1
-!s100 iBNGJV0mb>hejOYS0n6<f0
+!s100 67HQO7n30@cIFBEiZCel61
 R2
-ILHA[3c2S03Y4;i5J^hcY<0
+IB1]NOdHfI4d<X@dk_SZOZ1
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 481 28
+!i122 21
+L0 153 16
 R8
 r1
 !s85 0
@@ -59,21 +59,71 @@ R10
 !i113 1
 R11
 R12
-varm
+valu
 R0
 R1
 !i10b 1
-!s100 0@gXONJIQZiX8dX9I9EfM3
+!s100 Sen4RnI@nB>bkaGNzSY_a0
 R2
-I9TBZbeS3Z7``HQn84OGI>2
+IM4O]@:K2mHz2N2AO^Hd:20
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 160 24
+!i122 21
+L0 529 29
+R8
+r1
+!s85 0
+31
+R9
+R13
+R10
+!i113 1
+R11
+R12
+varm
+R0
+R1
+!i10b 1
+!s100 SR7ESeYOE9jOaTj9WcI<F1
+R2
+II:AHG>?hWf3Nmg_=dafzS2
+R3
+S1
+R4
+R5
+R6
+R7
+!i122 21
+L0 206 25
+R8
+r1
+!s85 0
+31
+R9
+R13
+R10
+!i113 1
+R11
+R12
+vcomparator
+R0
+R1
+!i10b 1
+!s100 d?JYGa9GEBZkzb<ZCRY1f1
+R2
+IhNVVD:dH0^6NP>o1i@PDE1
+R3
+S1
+R4
+R5
+R6
+R7
+!i122 21
+L0 170 9
 R8
 r1
 !s85 0
@@ -88,17 +138,17 @@ vcondcheck
 R0
 R1
 !i10b 1
-!s100 0WKf9M[;]NdbzC1P2=W2V0
+!s100 McKLLA>6R4M[<m=7b2k9X0
 R2
-I>PaCOl[WfgiVR9BZhRR^T3
+InoZ_BKUhSKnhIDm3@cR;^3
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 337 29
+!i122 21
+L0 385 29
 R8
 r1
 !s85 0
@@ -113,17 +163,17 @@ vcondlogic
 R0
 R1
 !i10b 1
-!s100 AeFiT[j2[JeZ5^a_GMQEa0
+!s100 ]mjBV?MNWGf3]3dEG6;la1
 R2
-I4oc?1GOA@UPXh@gzbJN_l0
+I;4W8E2>QUTaMIV9ZJQNgh1
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 312 24
+!i122 21
+L0 359 25
 R8
 r1
 !s85 0
@@ -138,17 +188,17 @@ vcontroller
 R0
 R1
 !i10b 1
-!s100 2H644^fgC=n3J>Bje8XO90
+!s100 zhTCzcLF;ZIJ^D>=hkfQY0
 R2
-IfO3IdRQB`]eL4RM>IOSl62
+IO8h1e>o@0GabG8i?TQXCZ3
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 185 20
+!i122 21
+L0 232 21
 R8
 r1
 !s85 0
@@ -163,17 +213,17 @@ vdatapath
 R0
 R1
 !i10b 1
-!s100 h0RXGMHNTCfm4aeUUR:9n0
+!s100 LI<KYazP3g`U6n7Zjl4MC0
 R2
-IP@dO^d?GKD7BJhM7Eh]i:0
+Ih8o?3k>hZ7IQCe@bYWd6V2
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 367 41
+!i122 21
+L0 415 41
 R8
 r1
 !s85 0
@@ -188,17 +238,17 @@ vdecoder
 R0
 R1
 !i10b 1
-!s100 4H]::eez0MR_ANZSKcFNP2
+!s100 HVmFHE9XT:?TU0MRFB8Vz2
 R2
-I^zGa<WW<QG>Sl]AhDKTYR0
+IT1XTg0YRFUZ5dbX@d>Z;f0
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 206 105
+!i122 21
+L0 255 103
 R8
 r1
 !s85 0
@@ -213,17 +263,17 @@ vdmem
 R0
 R1
 !i10b 1
-!s100 V:AUcf;@bl82K96bQfBA[3
+!s100 f_[^?DR<CjLzDSd6=CFK^2
 R2
-IAE5XH[aYI]]R]]7MK9g@Q1
+IlPn_k=HemV@P_6`edlC`m3
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 137 11
+!i122 21
+L0 180 14
 R8
 r1
 !s85 0
@@ -238,17 +288,17 @@ vextend
 R0
 R1
 !i10b 1
-!s100 O4VE_o`PGGK^Tnn7FET_W2
+!s100 ]OM=b`f9IgY<NFdY8[;2;0
 R2
-IgQozzN@I=g5Yfcoea6>UC3
+IY55F?m2K3OIbV;a5<`Png0
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 429 15
+!i122 21
+L0 477 15
 R8
 r1
 !s85 0
@@ -263,17 +313,17 @@ vflopenr
 R0
 R1
 !i10b 1
-!s100 ?EWW:hhSOfmnaoO1;IJ?^0
+!s100 6Gcz?1aa8S=dPQaao4jeg3
 R2
-I9=2Xe2ZYkYn^j:gUGAhDC3
+I:5bEG6CGWhX0FdT[A0=b10
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 452 9
+!i122 21
+L0 500 9
 R8
 r1
 !s85 0
@@ -288,17 +338,17 @@ vflopr
 R0
 R1
 !i10b 1
-!s100 W9ff07K?<]K]oP0S@CWio2
+!s100 j?GaQNc0C]Ka<ej=bH;V;1
 R2
-ITU:F:mAaS1CF@==n9kIkT1
+IKiJ;PWn;Vh`Un021_l8bM1
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 462 9
+!i122 21
+L0 510 9
 R8
 r1
 !s85 0
@@ -313,17 +363,17 @@ vimem
 R0
 R1
 !i10b 1
-!s100 =eKm[cE@S_0H0fh9T1VoG2
+!s100 0K[HE2:PjEC[IWHWfgIDE2
 R2
-IP:7X1jV]H9=`A?KAD<DMi3
+Iz:Pk9co<:1O6?j4P=UXQ<3
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 149 10
+!i122 21
+L0 195 10
 R8
 r1
 !s85 0
@@ -338,17 +388,17 @@ vmux2
 R0
 R1
 !i10b 1
-!s100 6zJB@8oc5G2CO?JDk^J8`0
+!s100 cOaa>Hh6A>T5S3Qd75nKj1
 R2
-I=K=@;Dk?fo;TZA30c_<QF1
+I4SHkab<Rc?E;HZhh@Rz=51
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 472 7
+!i122 21
+L0 520 7
 R8
 r1
 !s85 0
@@ -363,17 +413,17 @@ vregfile
 R0
 R1
 !i10b 1
-!s100 FUKm0e3o_?DMW8JnP@X`N3
+!s100 0>FOAjoezjio9Ha[Pb=OD2
 R2
-I[f<^F`CPjdRMOb?U[PD7E0
+I5[DoK4fo[@b1XYXX_bilD3
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 409 19
+!i122 21
+L0 457 19
 R8
 r1
 !s85 0
@@ -388,17 +438,42 @@ vtestbench
 R0
 R1
 !i10b 1
-!s100 3=nUUBFK43SNkd4EL?hzS2
+!s100 ET6U6hBiLngg8Y=cmGbBB0
 R2
-I9QEVW`W9CDUa]FQ:ZiJML3
+IfVmHVQ30]7h6=;X4gkoT[2
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 81 42
+!i122 21
+L0 76 49
+R8
+r1
+!s85 0
+31
+R9
+R13
+R10
+!i113 1
+R11
+R12
+vtimer
+R0
+R1
+!i10b 1
+!s100 ]VWcUNBL0?L9A;SfWCkSo1
+R2
+Ie5b04WT8H0dOXL^i7gTn@3
+R3
+S1
+R4
+R5
+R6
+R7
+!i122 21
+L0 141 11
 R8
 r1
 !s85 0
@@ -413,17 +488,17 @@ vtop
 R0
 R1
 !i10b 1
-!s100 =Gd;BghUSZE[<55;K3m:B0
+!s100 9Y8he2=Ch`MoG9lHIGY3o0
 R2
-IdBe:>H<Li52QA=l`2cZBm2
+IHig4ff47iO<dM5YcJ_X5m1
 R3
 S1
 R4
 R5
 R6
 R7
-!i122 11
-L0 124 12
+!i122 21
+L0 126 14
 R8
 r1
 !s85 0
